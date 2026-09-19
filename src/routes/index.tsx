@@ -15,18 +15,56 @@ function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AdvertisingAgency",
+
+    "@id": `${SITE.url}/#organization`,
+
     name: SITE.name,
+    alternateName: "ROYCE",
     description: SITE.description,
-    url: "/",
-    telephone: "+2349042436206",
-    sameAs: [SITE.instagramUrl, SITE.tiktokUrl, SITE.whatsappUrl],
-    areaServed: "NG",
+    url: SITE.url,
+    telephone: SITE.phoneInternational,
+
+    areaServed: {
+      "@type": "Country",
+      name: SITE.serviceArea,
+    },
+
     knowsAbout: [
-      "Social media advertising",
-      "Google Ads",
-      "Brand promotion",
-      "Video advertising",
+      "Advertising",
       "Digital marketing",
+      "Social media marketing",
+      "Social media advertising",
+      "Product advertising",
+      "Brand promotion",
+      "Content creation",
+      "UGC-style promotional videos",
+      "Marketing copywriting",
+      "AI advertising creative",
+      "AI product photography",
+      "Social media branding",
+      "WhatsApp marketing",
+      "Instagram marketing",
+    ],
+
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "ROYCE Marketing Services",
+      itemListElement: SITE.services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service,
+          provider: {
+            "@id": `${SITE.url}/#organization`,
+          },
+        },
+      })),
+    },
+
+    sameAs: [
+      SITE.instagramUrl,
+      SITE.tiktokUrl,
+      SITE.whatsappUrl,
     ],
   };
 
@@ -38,7 +76,9 @@ function Home() {
       >
         Skip to content
       </a>
+
       <Navbar />
+
       <main>
         <Hero />
         <Services />
@@ -47,10 +87,14 @@ function Home() {
         <Cta />
         <Contact />
       </main>
+
       <Footer />
+
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
       />
     </>
   );
