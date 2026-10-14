@@ -12,7 +12,9 @@ declare global {
   }
 }
 
-/** Default Pixel ID — override with VITE_META_PIXEL_ID in env if needed. */
+// The Pixel ID is public browser configuration. Prefer the deployment environment
+// variable, but keep the supplied Royce Marketing ID as a fallback so tracking
+// is not silently disabled when Vercel has not yet been configured.
 const PIXEL_ID =
   (import.meta.env.VITE_META_PIXEL_ID as string | undefined)?.trim() ||
   "1448403773516840";

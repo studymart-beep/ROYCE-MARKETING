@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import { getMetaPixelId, initMetaPixel, isMetaPixelConfigured, trackPageView } from "@/lib/meta-pixel";
+import { initMetaPixel, isMetaPixelConfigured, trackPageView } from "@/lib/meta-pixel";
 
 /**
  * Initializes Meta Pixel once and tracks PageView on route changes
@@ -27,7 +27,7 @@ export function MetaPixelTracker() {
   if (!isMetaPixelConfigured()) return null;
 
   // Noscript fallback image for non-JS environments (static ID from env at build time)
-  const id = getMetaPixelId();
+  const id = import.meta.env.VITE_META_PIXEL_ID as string;
   return (
     <noscript>
       <img
