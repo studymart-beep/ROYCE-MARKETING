@@ -1,63 +1,43 @@
-import { ClipboardList, LineChart, MessageSquare, Shield } from "lucide-react";
+import { Handshake, Lock, ListChecks } from "lucide-react";
 import { Section, SectionIntro } from "@/components/landing/section";
 
 const POINTS = [
   {
-    icon: MessageSquare,
-    title: "Clear communication",
-    text: "You know what is running, why it is running, and what we are changing — without waiting for a mystery monthly PDF.",
+    icon: ListChecks,
+    title: "Clear process",
+    body: "You always know the next step — audit, call, setup, or optimization — with plain language, not jargon.",
   },
   {
-    icon: LineChart,
-    title: "Honest reporting",
-    text: "We report what the platforms actually show. No inflated claims or guaranteed outcomes.",
+    icon: Lock,
+    title: "Transparent communication",
+    body: "We explain what we are doing with your budget and accounts. No hidden markups presented as “magic”.",
   },
   {
-    icon: ClipboardList,
-    title: "Documented process",
-    text: "Strategy, launch checklists, and optimization notes so work does not live only in one person's head.",
-  },
-  {
-    icon: Shield,
-    title: "Transparent access",
-    text: "Where possible, you retain ownership of ad accounts and assets. We work as a partner, not a gatekeeper.",
+    icon: Handshake,
+    title: "Honest expectations",
+    body: "We do not invent testimonials, ratings, or performance stats. Results depend on offer, creative, budget, and market.",
   },
 ];
 
 export function Trust() {
   return (
-    <Section id="trust" tone="ivory">
+    <Section id="about" className="bg-ivory">
       <SectionIntro
-        eyebrow="Working with us"
-        title="Process, communication, and transparency."
-        description="We do not invent case studies or ratings. What you can expect is a professional process and open reporting."
+        eyebrow="How we work"
+        title="Built on process and transparency"
+        description="Trust comes from how we work with you — not from fabricated case studies or fake logos."
       />
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
-        {POINTS.map((point) => (
-          <div
-            key={point.title}
-            className="flex gap-4 rounded-xl bg-paper p-6 shadow-card"
-          >
-            <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
-              <point.icon className="size-5" strokeWidth={1.75} />
+      <div className="mt-12 grid gap-5 md:grid-cols-3">
+        {POINTS.map((p) => (
+          <div key={p.title} className="rounded-2xl border border-border bg-paper p-6 shadow-sm">
+            <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
+              <p.icon className="size-5" strokeWidth={1.75} />
             </span>
-            <div>
-              <h3 className="text-base font-semibold tracking-tight text-ink">
-                {point.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {point.text}
-              </p>
-            </div>
+            <h3 className="mt-4 text-base font-semibold text-ink">{p.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
           </div>
         ))}
       </div>
-      <p className="mt-8 rounded-xl border border-dashed border-border bg-paper/60 px-5 py-4 text-sm text-muted">
-        <strong className="font-semibold text-ink">Client results:</strong>{" "}
-        When we have permission to share specific campaign outcomes, they will
-        appear here. Until then, we focus on process and measurable work rather
-        than unverified claims.
-      </p>
     </Section>
   );
 }

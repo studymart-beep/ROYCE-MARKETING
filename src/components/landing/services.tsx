@@ -1,111 +1,95 @@
-import {
-  BarChart3,
-  Crosshair,
-  LayoutTemplate,
-  Megaphone,
-  Radio,
-} from "lucide-react";
+import { ArrowRight, Check, Facebook, Music2 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { Section, SectionIntro } from "@/components/landing/section";
 
-const SERVICES = [
-  {
-    title: "Meta Ads Management",
-    description:
-      "Facebook and Instagram campaigns built to reach the right people and drive qualified actions — not just vanity metrics.",
-    items: [
-      "Campaign structure & audience strategy",
-      "Creative testing and iteration",
-      "Budget pacing and bid management",
-      "Ongoing optimization",
-    ],
-    icon: Megaphone,
-  },
-  {
-    title: "TikTok Ads Management",
-    description:
-      "Native TikTok campaigns that match how people discover and engage on the platform.",
-    items: [
-      "In-feed and spark ads setup",
-      "Creative direction for short-form video",
-      "Audience and interest targeting",
-      "Performance monitoring",
-    ],
-    icon: Radio,
-  },
-  {
-    title: "Landing Page & Funnel Optimization",
-    description:
-      "Align your ads with pages and funnels that convert interest into leads or sales.",
-    items: [
-      "Offer and message clarity",
-      "Page structure recommendations",
-      "Friction reduction on key steps",
-      "Post-click experience review",
-    ],
-    icon: LayoutTemplate,
-  },
-  {
-    title: "Pixel & Conversion Tracking",
-    description:
-      "Reliable tracking so you can measure what matters and optimize toward real outcomes.",
-    items: [
-      "Meta Pixel / CAPI setup guidance",
-      "TikTok Pixel setup",
-      "Event mapping for key actions",
-      "Basic QA of tracking health",
-    ],
-    icon: Crosshair,
-  },
-  {
-    title: "Campaign Reporting & Optimization",
-    description:
-      "Clear reporting and disciplined optimization so you always know what is working.",
-    items: [
-      "Regular performance summaries",
-      "Insight-driven recommendations",
-      "Budget and creative adjustments",
-      "Transparent communication",
-    ],
-    icon: BarChart3,
-  },
+const META_POINTS = [
+  "Facebook & Instagram campaign strategy",
+  "Meta Business Manager & ad account setup",
+  "Pixel / CAPI tracking guidance",
+  "Creative testing and audience structure",
+  "Ongoing optimization and clear reporting",
+];
+
+const TIKTOK_POINTS = [
+  "TikTok Ads account & pixel setup support",
+  "Creative-first campaign structure",
+  "Spark Ads and in-feed formats guidance",
+  "Audience and placement strategy",
+  "Performance review and iteration",
 ];
 
 export function Services() {
   return (
-    <Section id="services" tone="ivory">
+    <Section id="services" className="bg-ivory">
       <SectionIntro
         eyebrow="Services"
-        title="Paid advertising built around qualified demand."
-        description="Focused Meta Ads and TikTok Ads management, plus the tracking and funnel work that makes campaigns measurable."
+        title="Advertising that puts your brand in front of the right people"
+        description="Focused Meta and TikTok advertising — setup, management, and measurement — without noise or empty promises."
       />
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES.map((service) => (
-          <article
-            key={service.title}
-            className="flex flex-col rounded-xl bg-paper p-6 shadow-card transition-shadow duration-200 hover:shadow-card-hover"
-          >
-            <span className="inline-flex size-11 items-center justify-center rounded-lg bg-primary-soft text-primary">
-              <service.icon className="size-5" strokeWidth={1.75} />
+
+      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-paper p-7 shadow-card transition hover:shadow-card-hover md:p-8">
+          <div className="absolute -right-8 -top-8 size-32 rounded-full bg-primary/5 transition group-hover:bg-primary/10" aria-hidden />
+          <div className="relative flex items-center gap-3">
+            <span className="inline-flex size-12 items-center justify-center rounded-xl bg-primary text-paper shadow-md shadow-primary/25">
+              <Facebook className="size-6" strokeWidth={1.75} />
             </span>
-            <h3 className="mt-5 text-lg font-semibold tracking-tight text-ink">
-              {service.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
-              {service.description}
-            </p>
-            <ul className="mt-5 space-y-2">
-              {service.items.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-ink">
-                  <span
-                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
-                    aria-hidden="true"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
+            <div>
+              <h3 className="text-xl font-semibold text-ink">Meta Ads Management</h3>
+              <p className="text-sm text-muted">Facebook · Instagram · Account setup</p>
+            </div>
+          </div>
+          <p className="relative mt-5 text-sm leading-relaxed text-muted">
+            Strategy, account structure, and campaign management so your brand reaches
+            people who are more likely to care — with tracking set up the right way.
+          </p>
+          <ul className="relative mt-6 flex-1 space-y-2.5">
+            {META_POINTS.map((point) => (
+              <li key={point} className="flex gap-2.5 text-sm text-ink">
+                <Check className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={2.25} />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+          <Button asChild className="relative mt-8 w-full sm:w-auto" size="lg">
+            <Link to="/free-audit">
+              Get a Free Meta Ad Audit
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+        </article>
+
+        <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-paper p-7 shadow-card transition hover:shadow-card-hover md:p-8">
+          <div className="absolute -right-8 -top-8 size-32 rounded-full bg-primary/5 transition group-hover:bg-primary/10" aria-hidden />
+          <div className="relative flex items-center gap-3">
+            <span className="inline-flex size-12 items-center justify-center rounded-xl bg-ink text-paper shadow-md">
+              <Music2 className="size-6" strokeWidth={1.75} />
+            </span>
+            <div>
+              <h3 className="text-xl font-semibold text-ink">TikTok Ad Management</h3>
+              <p className="text-sm text-muted">TikTok Ads · Account setup</p>
+            </div>
+          </div>
+          <p className="relative mt-5 text-sm leading-relaxed text-muted">
+            Creative-led campaigns built for how people actually watch and discover on
+            TikTok — with clear structure, tracking, and steady optimization.
+          </p>
+          <ul className="relative mt-6 flex-1 space-y-2.5">
+            {TIKTOK_POINTS.map((point) => (
+              <li key={point} className="flex gap-2.5 text-sm text-ink">
+                <Check className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={2.25} />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+          <Button asChild className="relative mt-8 w-full sm:w-auto" size="lg">
+            <Link to="/free-audit">
+              Get a Free TikTok Ad Audit
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+        </article>
       </div>
     </Section>
   );

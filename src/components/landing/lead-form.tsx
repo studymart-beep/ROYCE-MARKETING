@@ -11,6 +11,7 @@ import {
   SERVICE_OPTIONS,
 } from "@/lib/site";
 import { submitLead } from "@/lib/leads";
+import { trackLead } from "@/lib/meta-pixel";
 
 type FormState = "idle" | "loading" | "error";
 
@@ -62,6 +63,7 @@ export function LeadForm({
       });
 
       if (result.ok) {
+        trackLead(result.leadId);
         void navigate({
           to: "/thank-you",
           search: { ref: String(result.leadId) },

@@ -1,21 +1,26 @@
 export const SITE = {
   name: "Royce Marketing",
-  title: "Royce Marketing — Attract Qualified Leads with Meta & TikTok Ads",
+  title: "Royce Marketing — Your Brand Deserves To Be Seen",
   description:
-    "Royce Marketing helps businesses attract qualified leads and generate opportunities through Meta Ads (Facebook & Instagram) and TikTok Ads management, funnel optimization, and conversion tracking.",
+    "Royce Marketing helps businesses attract attention and generate opportunities with Meta Ads (Facebook & Instagram) and TikTok Ads — strategy, setup, tracking, and ongoing optimization.",
+  url: "https://royce-marketing.vercel.app",
   phoneDisplay: "09042436206",
+  phoneInternational: "+2349042436206",
   whatsappUrl: "https://wa.me/2349042436206",
   instagramUrl: "https://www.instagram.com/roycemarketing",
   instagramHandle: "@roycemarketing",
   tiktokUrl: "https://www.tiktok.com/@roycemarketing",
   tiktokHandle: "@roycemarketing",
   emailPlaceholder: "hello@roycemarketing.com",
+  /** Set VITE_CAL_COM_URL when ready, e.g. https://cal.com/your-username/strategy */
+  calComUrl: (import.meta.env.VITE_CAL_COM_URL as string | undefined)?.trim() ?? "",
 } as const;
 
 export const NAV_LINKS = [
+  { href: "/#home", label: "Home" },
   { href: "/#services", label: "Services" },
   { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#audit", label: "Free Audit" },
+  { href: "/#about", label: "About" },
   { href: "/#faq", label: "FAQ" },
 ] as const;
 
@@ -30,9 +35,9 @@ export const SERVICE_OPTIONS = [
 
 export const BUDGET_OPTIONS = [
   { value: "under-100k", label: "Under ₦100,000 / month" },
-  { value: "100k-300k", label: "₦100,000 - ₦300,000 / month" },
-  { value: "300k-500k", label: "₦300,000 - ₦500,000 / month" },
-  { value: "500k-1m", label: "₦500,000 - ₦1,000,000 / month" },
+  { value: "100k-300k", label: "₦100,000 – ₦300,000 / month" },
+  { value: "300k-500k", label: "₦300,000 – ₦500,000 / month" },
+  { value: "500k-1m", label: "₦500,000 – ₦1,000,000 / month" },
   { value: "over-1m", label: "Over ₦1,000,000 / month" },
   { value: "not-decided", label: "Not decided yet" },
 ] as const;

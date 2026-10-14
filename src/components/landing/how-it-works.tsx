@@ -1,60 +1,54 @@
+import { ClipboardCheck, PhoneCall, Rocket, LineChart } from "lucide-react";
 import { Section, SectionIntro } from "@/components/landing/section";
 
 const STEPS = [
   {
-    number: "01",
-    title: "Discover your goals",
-    text: "We clarify what success looks like — leads, sales, awareness — and the constraints of your market and offer.",
+    icon: ClipboardCheck,
+    title: "Free Ad Audit",
+    body: "Share your business and current ads (if any). We review structure, tracking, and opportunities — honestly.",
   },
   {
-    number: "02",
-    title: "Audit the current setup",
-    text: "We review existing ad accounts, creatives, tracking, and landing experience to find gaps and opportunities.",
+    icon: PhoneCall,
+    title: "Strategy Call",
+    body: "A short call to align on goals, budget range, and whether Meta, TikTok, or both make sense for you.",
   },
   {
-    number: "03",
-    title: "Develop the strategy",
-    text: "Audience, offer, creative direction, budget allocation, and measurement plan tailored to your business.",
+    icon: Rocket,
+    title: "Campaign Setup",
+    body: "Account setup support, tracking checks, creative direction, and launch of structured campaigns.",
   },
   {
-    number: "04",
-    title: "Launch & optimize",
-    text: "Campaigns go live with disciplined testing. We adjust targeting, creatives, and bids based on real data.",
-  },
-  {
-    number: "05",
-    title: "Measure & report",
-    text: "You receive clear performance summaries and next-step recommendations — no jargon, no black boxes.",
+    icon: LineChart,
+    title: "Track & Optimize",
+    body: "Monitor performance, test improvements, and report clearly so you know what is changing and why.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section id="how-it-works" tone="paper">
+    <Section id="how-it-works" className="bg-paper">
       <SectionIntro
-        eyebrow="Process"
-        title="How we work with you."
-        description="A clear path from first conversation to live campaigns and ongoing improvement."
+        eyebrow="How it works"
+        title="A simple path from first conversation to live campaigns"
+        description="Four clear steps. No pressure tactics and no guaranteed-result claims."
       />
-      <ol className="relative mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
-        {STEPS.map((step) => (
-          <li key={step.number} className="relative">
-            <div className="flex items-start gap-4 lg:flex-col lg:items-start">
-              <span className="relative z-10 inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-primary-soft text-sm font-semibold tracking-wide text-primary">
-                {step.number}
-              </span>
-              <div>
-                <h3 className="text-base font-semibold tracking-tight text-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {step.text}
-                </p>
-              </div>
-            </div>
-          </li>
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {STEPS.map((step, index) => (
+          <div
+            key={step.title}
+            className="relative rounded-2xl border border-border bg-ivory/60 p-6 shadow-sm"
+          >
+            <span className="absolute right-4 top-4 text-4xl font-bold text-primary/10">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
+              <step.icon className="size-5" strokeWidth={1.75} />
+            </span>
+            <h3 className="mt-4 text-base font-semibold text-ink">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
+          </div>
         ))}
-      </ol>
+      </div>
     </Section>
   );
 }

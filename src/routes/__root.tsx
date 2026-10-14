@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { MetaPixelTracker } from "@/components/meta-pixel-tracker";
 import { SITE } from "@/lib/site";
 import appCss from "../styles.css?url";
 
@@ -16,9 +17,13 @@ export const Route = createRootRoute({
       {
         name: "keywords",
         content:
-          "Royce Marketing, Meta Ads, Facebook Ads, Instagram Ads, TikTok Ads, lead generation, conversion tracking, digital marketing agency Nigeria",
+          "Royce Marketing, Meta Ads, Facebook Ads, Instagram Ads, TikTok Ads, advertising agency Nigeria, free ad audit",
       },
       { name: "robots", content: "index, follow" },
+      { property: "og:title", content: SITE.title },
+      { property: "og:description", content: SITE.description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -45,6 +50,7 @@ function RootDocument() {
       <body className="bg-paper text-ink">
         <PreviewHostBridge />
         <AuthProvider>
+          <MetaPixelTracker />
           <Outlet />
         </AuthProvider>
         <Scripts />

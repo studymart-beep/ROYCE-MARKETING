@@ -1,48 +1,79 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Section, SectionIntro } from "@/components/landing/section";
+import { cn } from "@/lib/utils";
 
 const FAQS = [
   {
-    q: "How does the service work?",
-    a: "We start with a discovery call or audit request, then propose a strategy for Meta Ads and/or TikTok Ads. After agreement, we set up or take over campaigns, implement tracking where needed, launch, and optimize. You receive regular updates on performance and recommended changes.",
+    q: "What platforms do you manage?",
+    a: "We focus on Meta Ads (Facebook and Instagram) and TikTok Ads — including account setup support, campaign structure, tracking guidance, and ongoing optimization.",
   },
   {
-    q: "Who is this for?",
-    a: "Businesses and brands that want to attract qualified leads or drive measurable demand through paid social — especially on Facebook, Instagram, and TikTok. It is a fit if you have a clear offer, a way to follow up on leads, and a realistic budget for ads plus management.",
-  },
-  {
-    q: "What affects pricing?",
-    a: "Pricing depends on platforms managed, campaign complexity, number of offers or markets, and the level of creative and landing-page support required. Ad spend is separate and paid directly to the platforms. We discuss scope before any engagement.",
-  },
-  {
-    q: "How do advertising budgets work?",
-    a: "You fund the ad platforms (Meta, TikTok) directly from your own ad accounts whenever possible. Management fees are separate. We help set a starting budget range based on your goals and market, then adjust based on performance data — we do not promise a fixed cost-per-result.",
-  },
-  {
-    q: "What do I need before campaigns launch?",
-    a: "Typically: access to (or creation of) ad accounts, business assets (logo, product info, creatives or brief), a landing page or lead form destination, and clarity on the conversion action you care about (form fill, call, purchase, etc.). Tracking setup is part of the process when it is not already in place.",
+    q: "What is the free ad audit?",
+    a: "A short review of your business goals, current advertising (if any), and tracking setup. You get practical observations and suggested next steps. It is not a full managed campaign.",
   },
   {
     q: "Do you guarantee results?",
-    a: "No. Paid advertising outcomes depend on offer, creative, audience, competition, tracking quality, and budget. We commit to a professional process, transparent reporting, and continuous optimization — not guaranteed ROAS or lead volume.",
+    a: "No. Paid advertising outcomes depend on your offer, creative, budget, competition, and market conditions. We commit to a clear process and honest reporting — not guaranteed ROI claims.",
+  },
+  {
+    q: "How do budgets work?",
+    a: "Ad spend is paid to Meta or TikTok. Our service fee is separate and discussed on a strategy call based on scope. We will not invent numbers on the website.",
+  },
+  {
+    q: "Do I need a website?",
+    a: "A website or landing page helps, but some businesses start with social profiles and simple lead forms. We will recommend what fits your situation during the audit or call.",
+  },
+  {
+    q: "How do I get started?",
+    a: "Request a free ad audit or book a strategy call. We will follow up with next steps if there is a good fit.",
   },
 ];
 
 export function Faq() {
+  const [open, setOpen] = useState<number | null>(0);
+
   return (
-    <Section id="faq" tone="ivory">
-      <SectionIntro eyebrow="FAQ" title="Common questions before you start." />
-      <div className="mx-auto mt-12 max-w-3xl divide-y divide-border rounded-xl bg-paper shadow-card">
-        {FAQS.map((item) => (
-          <details key={item.q} className="group px-6 py-5">
-            <summary className="cursor-pointer list-none text-base font-semibold tracking-tight text-ink marker:content-none [&::-webkit-details-marker]:hidden">
-              <span className="flex items-center justify-between gap-4">
+    <Section id="faq" className="bg-paper">
+      <SectionIntro
+        eyebrow="FAQ"
+        title="Common questions"
+        description="Straight answers about how we work."
+      />
+      <div className="mx-auto mt-10 max-w-3xl divide-y divide-border rounded-2xl border border-border bg-ivory/50 shadow-sm">
+        {FAQS.map((item, i) => {
+          const isOpen = open === i;
+          return (
+            <div key={item.q}>
+              <button
+                type="button"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-ink md:px-6 md:text-base"
+                onClick={() => setOpen(isOpen ? null : i)}
+                aria-expanded={isOpen}
+              >
                 {item.q}
-                <span className="text-muted transition-transform group-open:rotate-45">+</span>
-              </span>
-            </summary>
-            <p className="mt-3 text-sm leading-relaxed text-muted">{item.a}</p>
-          </details>
-        ))}
+                <ChevronDown
+                  className={cn(
+                    "size-5 shrink-0 text-muted transition-transform",
+                    isOpen && "rotate-180 text-primary",
+                  )}
+                />
+              </button>
+              <div
+                className={cn(
+                  "grid transition-[grid-template-rows] duration-200",
+                  isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                )}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-5 pb-4 text-sm leading-relaxed text-muted md:px-6">
+                    {item.a}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </Section>
   );

@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AuditOffer } from "@/components/landing/audit-offer";
+import { Benefits } from "@/components/landing/benefits";
 import { Cta } from "@/components/landing/cta";
 import { Faq } from "@/components/landing/faq";
 import { Footer } from "@/components/landing/footer";
+import { FunnelProcess } from "@/components/landing/funnel-process";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { Navbar } from "@/components/landing/navbar";
@@ -19,8 +21,8 @@ function Home() {
     "@type": "AdvertisingAgency",
     name: SITE.name,
     description: SITE.description,
-    url: "/",
-    telephone: "+2349042436206",
+    url: SITE.url,
+    telephone: SITE.phoneInternational,
     sameAs: [SITE.instagramUrl, SITE.tiktokUrl, SITE.whatsappUrl],
     areaServed: "NG",
     knowsAbout: [
@@ -30,7 +32,6 @@ function Home() {
       "TikTok Ads",
       "Conversion tracking",
       "Landing page optimization",
-      "Digital marketing",
     ],
   };
 
@@ -46,9 +47,11 @@ function Home() {
       <main>
         <Hero />
         <Services />
+        <Benefits />
+        <FunnelProcess />
         <HowItWorks />
-        <Trust />
         <AuditOffer />
+        <Trust />
         <Faq />
         <Cta />
       </main>
