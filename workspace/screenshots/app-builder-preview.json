@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Royce Marketing — Your Brand Deserves To Be Seen.",
+      "hasCanvas": false,
+      "bodyTextLen": 3571,
+      "bodyTextHash": "d130c85da62fd232800aab6027450e0a1a9c8fda191d9f841796a311981d272c",
+      "bodyTextPrefix": "Skip to content Royce Marketing Home Services About Contact Get ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Royce Marketing — Your Brand Deserves To Be Seen.",
+      "hasCanvas": false,
+      "bodyTextLen": 3411,
+      "bodyTextHash": "28c905b3f5d010ce399ea5b02dfecaef17d29502b489e37e0c6e5b495b1eb1ea",
+      "bodyTextPrefix": "Skip to content Royce Marketing ADVERTISING AGENCY Your Brand De",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
